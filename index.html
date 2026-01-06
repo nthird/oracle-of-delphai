@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Oracle of DelphAI</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="scripts/script.js"></script>
+	</head>
+	<body>
+		<div class="jumbotron text-center" style="padding:1em">
+		  <h1>The Oracle of DelphAI</h1>
+		  <p>Do your tarot reading now</p> 
+		</div>
+		
+		<p></p>
+		
+		<div class="container">
+		  <div class="row">
+			<div class="col-1">
+				Past Card
+			</div>
+		    <div class="col-3" id="pastCardStatus">
+			</div>
+			<div class="col-1">
+				Present Card
+			</div>
+			<div class="col-3" id="presentCardStatus">				
+			</div>
+			<div class="col-1">
+				Future Card
+			</div>
+			<div class="col-3" id="futureCardStatus">
+			</div>
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="container">
+		  <div class="row">
+			<div class="col-12">
+			  <button type="button" id="submitTarotButton" class="btn btn-primary">Get your Prompt</button>
+			</div>
+			<div class="col-12">
+			  <button type="button" id="submitTarotButtonDebugger" class="btn btn-primary">Turn on submit</button>
+			</div>
+			
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="container" id="overallRadioContainer">
+		  <div class="row">
+			<div class="col-3" id="timeRadio">
+			  <p>Please select your current card</p>
+				<input type="radio" id="timePastRadio" name="time_card" value="Past">
+				<label for="timePastRadio">Past</label><br>
+				<input type="radio" id="timePresentRadio" name="time_card" value="Present">
+				<label for="timePresentRadio">Present</label><br>
+				<input type="radio" id="timeFutureRadio" name="time_card" value="Future">
+				<label for="timeFutureRadio">Future</label>
+				<br>
+			</div>
+			<div class="col-3" id="suitRadio" style="display:none">
+			  <p>Select the suit of your card</p>
+				<input type="radio" id="suitArcanaRadio" name="suit_card" value="Arcana">
+				<label for="suitArcanaRadio">Arcana</label><br>
+				<input type="radio" id="suitWandsRadio" name="suit_card" value="Wands">
+				<label for="suitWandsRadio">Wands</label><br>
+				<input type="radio" id="suitCupsRadio" name="suit_card" value="Cups">
+				<label for="suitCupsRadio">Cups</label><br>
+				<input type="radio" id="suitSwordsRadio" name="suit_card" value="Swords">
+				<label for="suitSwordsRadio">Swords</label><br>
+				<input type="radio" id="suitPentaclesRadio" name="suit_card" value="Pentacles">
+				<label for="suitPentaclesRadio">Pentacles</label><br>
+			</div>
+			<div class="col-3" id="valueRadio">
+				<div id="arcanaRadio" style="display:none">
+				  <p>Select the value of your card</p>
+					<input type="radio" id="arcanaFoolRadio" name="suit_arcana_card" value="Fool">
+					<label for="arcanaFoolRadio">The Fool (0)</label><br>
+					<input type="radio" id="arcanaMagicianRadio" name="suit_arcana_card" value="Magician">
+					<label for="arcanaMagicianRadio">The Magician (I)</label><br>
+					<input type="radio" id="arcanaHighPriestessRadio" name="suit_arcana_card" value="High Priestess">
+					<label for="arcanaHighPriestessRadio">The High Priestess (II)</label><br>
+					<input type="radio" id="arcanaEmpressRadio" name="suit_arcana_card" value="Empress">
+					<label for="arcanaEmpressRadio">The Empress (III)</label><br>
+					<input type="radio" id="arcanaEmperorRadio" name="suit_arcana_card" value="Emperor">
+					<label for="arcanaEmperorRadio">The Emperor (IV)</label><br>
+					<input type="radio" id="arcanaHierophantRadio" name="suit_arcana_card" value="Hierophant">
+					<label for="arcanaHierophantRadio">The Hierophant (V)</label><br>
+					<input type="radio" id="arcanaLoversRadio" name="suit_arcana_card" value="Lovers">
+					<label for="arcanaLoversRadio">The Lovers (VI)</label><br>
+					<input type="radio" id="arcanaChariotRadio" name="suit_arcana_card" value="Chariot">
+					<label for="arcanaChariotRadio">The Chariot (VII)</label><br>
+					<input type="radio" id="arcanaStrengthRadio" name="suit_arcana_card" value="Strength">
+					<label for="arcanaStrengthRadio">Strength (VIII)</label><br>
+					<input type="radio" id="arcanaHermitRadio" name="suit_arcana_card" value="Hermit">
+					<label for="arcanaHermitRadio">The Hermit (IX)</label><br>
+					<input type="radio" id="arcanaWheelOfFortuneRadio" name="suit_arcana_card" value="Wheel Of Fortune">
+					<label for="arcanaWheelOfFortuneRadio">Wheel of Fortune (X)</label><br>
+					<input type="radio" id="arcanaJusticeRadio" name="suit_arcana_card" value="Justice">
+					<label for="arcanaJusticeRadio">Justice (XI)</label><br>
+					<input type="radio" id="arcanaHangedManRadio" name="suit_arcana_card" value="Hanged Man">
+					<label for="arcanaHangedManRadio">The Hanged Man (XII)</label><br>
+					<input type="radio" id="arcanaDeathRadio" name="suit_arcana_card" value="Death">
+					<label for="arcanaDeathRadio">Death (XIII)</label><br>
+					<input type="radio" id="arcanaTemperanceRadio" name="suit_arcana_card" value="Temperance">
+					<label for="arcanaTemperanceRadio">Temperance (XIV)</label><br>
+					<input type="radio" id="arcanaDevilRadio" name="suit_arcana_card" value="Devil">
+					<label for="arcanaDevilRadio">The Devil (XV)</label><br>
+					<input type="radio" id="arcanaTowerRadio" name="suit_arcana_card" value="Tower">
+					<label for="arcanaTowerRadio">The Tower (XVI)</label><br>
+					<input type="radio" id="arcanaStarRadio" name="suit_arcana_card" value="Star">
+					<label for="arcanaStarRadio">The Star (XVII)</label><br>
+					<input type="radio" id="arcanaMoonRadio" name="suit_arcana_card" value="Moon">
+					<label for="arcanaMoonRadio">The Moon (XVIII)</label><br>
+					<input type="radio" id="arcanaSunRadio" name="suit_arcana_card" value="Sun">
+					<label for="arcanaSunRadio">The Sun (XIX)</label><br>
+					<input type="radio" id="arcanaJudgmentRadio" name="suit_arcana_card" value="Judgment">
+					<label for="arcanaJudgmentRadio">Judgment (XX)</label><br>
+					<input type="radio" id="arcanaWorldRadio" name="suit_arcana_card" value="World">
+					<label for="arcanaWorldRadio">The World (XXI)</label><br>
+				</div>
+				
+				<div id="wandsRadio" style="display:none">
+				  <p>Select the value of your card</p>
+					<input type="radio" id="wandsAceRadio" name="suit_wands_card" value="Ace">
+					<label for="wandsAceRadio">Ace</label><br>
+					<input type="radio" id="wandsTwoRadio" name="suit_wands_card" value="Two">
+					<label for="wandsTwoRadio">Two</label><br>
+					<input type="radio" id="wandsThreeRadio" name="suit_wands_card" value="Three">
+					<label for="wandsThreeRadio">Three</label><br>
+					<input type="radio" id="wandsFourRadio" name="suit_wands_card" value="Four">
+					<label for="wandsFourRadio">Four</label><br>
+					<input type="radio" id="wandsFiveRadio" name="suit_wands_card" value="Five">
+					<label for="wandsFiveRadio">Five</label><br>
+					<input type="radio" id="wandsSixRadio" name="suit_wands_card" value="Six">
+					<label for="wandsSixRadio">Six</label><br>
+					<input type="radio" id="wandsSevenRadio" name="suit_wands_card" value="Seven">
+					<label for="wandsSevenRadio">Seven</label><br>
+					<input type="radio" id="wandsEightRadio" name="suit_wands_card" value="Eight">
+					<label for="wandsEightRadio">Eight</label><br>
+					<input type="radio" id="wandsNineRadio" name="suit_wands_card" value="Nine">
+					<label for="wandsNineRadio">Nine</label><br>
+					<input type="radio" id="wandsTenRadio" name="suit_wands_card" value="Ten">
+					<label for="wandsTenRadio">Ten</label><br>
+					<input type="radio" id="wandsPageRadio" name="suit_wands_card" value="Page">
+					<label for="wandsPageRadio">Page</label><br>
+					<input type="radio" id="wandsKnightRadio" name="suit_wands_card" value="Knight">
+					<label for="wandsKnightRadio">Knight</label><br>
+					<input type="radio" id="wandsQueenRadio" name="suit_wands_card" value="Queen">
+					<label for="wandsQueenRadio">Queen</label><br>
+					<input type="radio" id="wandsKingRadio" name="suit_wands_card" value="King">
+					<label for="wandsKingRadio">King</label><br>
+				</div>
+				
+				<div id="cupsRadio" style="display:none">
+				  <p>Select the value of your card</p>
+					<input type="radio" id="cupsAceRadio" name="suit_cups_card" value="Ace">
+					<label for="cupsAceRadio">Ace</label><br>
+					<input type="radio" id="cupsTwoRadio" name="suit_cups_card" value="Two">
+					<label for="cupsTwoRadio">Two</label><br>
+					<input type="radio" id="cupsThreeRadio" name="suit_cups_card" value="Three">
+					<label for="cupsThreeRadio">Three</label><br>
+					<input type="radio" id="cupsFourRadio" name="suit_cups_card" value="Four">
+					<label for="cupsFourRadio">Four</label><br>
+					<input type="radio" id="cupsFiveRadio" name="suit_cups_card" value="Five">
+					<label for="cupsFiveRadio">Five</label><br>
+					<input type="radio" id="cupsSixRadio" name="suit_cups_card" value="Six">
+					<label for="cupsSixRadio">Six</label><br>
+					<input type="radio" id="cupsSevenRadio" name="suit_cups_card" value="Seven">
+					<label for="cupsSevenRadio">Seven</label><br>
+					<input type="radio" id="cupsEightRadio" name="suit_cups_card" value="Eight">
+					<label for="cupsEightRadio">Eight</label><br>
+					<input type="radio" id="cupsNineRadio" name="suit_cups_card" value="Nine">
+					<label for="cupsNineRadio">Nine</label><br>
+					<input type="radio" id="cupsTenRadio" name="suit_cups_card" value="Ten">
+					<label for="cupsTenRadio">Ten</label><br>
+					<input type="radio" id="cupsPageRadio" name="suit_cups_card" value="Page">
+					<label for="cupsPageRadio">Page</label><br>
+					<input type="radio" id="cupsKnightRadio" name="suit_cups_card" value="Knight">
+					<label for="cupsKnightRadio">Knight</label><br>
+					<input type="radio" id="cupsQueenRadio" name="suit_cups_card" value="Queen">
+					<label for="cupsQueenRadio">Queen</label><br>
+					<input type="radio" id="cupsKingRadio" name="suit_cups_card" value="King">
+					<label for="cupsKingRadio">King</label><br>
+				</div>
+				
+				<div id="swordsRadio" style="display:none">
+				  <p>Select the value of your card</p>
+					<input type="radio" id="swordsAceRadio" name="suit_swords_card" value="Ace">
+					<label for="swordsAceRadio">Ace</label><br>
+					<input type="radio" id="swordsTwoRadio" name="suit_swords_card" value="Two">
+					<label for="swordsTwoRadio">Two</label><br>
+					<input type="radio" id="swordsThreeRadio" name="suit_swords_card" value="Three">
+					<label for="swordsThreeRadio">Three</label><br>
+					<input type="radio" id="swordsFourRadio" name="suit_swords_card" value="Four">
+					<label for="swordsFourRadio">Four</label><br>
+					<input type="radio" id="swordsFiveRadio" name="suit_swords_card" value="Five">
+					<label for="swordsFiveRadio">Five</label><br>
+					<input type="radio" id="swordsSixRadio" name="suit_swords_card" value="Six">
+					<label for="swordsSixRadio">Six</label><br>
+					<input type="radio" id="swordsSevenRadio" name="suit_swords_card" value="Seven">
+					<label for="swordsSevenRadio">Seven</label><br>
+					<input type="radio" id="swordsEightRadio" name="suit_swords_card" value="Eight">
+					<label for="swordsEightRadio">Eight</label><br>
+					<input type="radio" id="swordsNineRadio" name="suit_swords_card" value="Nine">
+					<label for="swordsNineRadio">Nine</label><br>
+					<input type="radio" id="swordsTenRadio" name="suit_swords_card" value="Ten">
+					<label for="swordsTenRadio">Ten</label><br>
+					<input type="radio" id="swordsPageRadio" name="suit_swords_card" value="Page">
+					<label for="swordsPageRadio">Page</label><br>
+					<input type="radio" id="swordsKnightRadio" name="suit_swords_card" value="Knight">
+					<label for="swordsKnightRadio">Knight</label><br>
+					<input type="radio" id="swordsQueenRadio" name="suit_swords_card" value="Queen">
+					<label for="swordsQueenRadio">Queen</label><br>
+					<input type="radio" id="swordsKingRadio" name="suit_swords_card" value="King">
+					<label for="swordsKingRadio">King</label><br>
+				</div>
+				
+				<div id="pentaclesRadio" style="display:none">
+				  <p>Select the value of your card</p>
+					<input type="radio" id="pentaclesAceRadio" name="suit_pentacles_card" value="Ace">
+					<label for="pentaclesAceRadio">Ace</label><br>
+					<input type="radio" id="pentaclesTwoRadio" name="suit_pentacles_card" value="Two">
+					<label for="pentaclesTwoRadio">Two</label><br>
+					<input type="radio" id="pentaclesThreeRadio" name="suit_pentacles_card" value="Three">
+					<label for="pentaclesThreeRadio">Three</label><br>
+					<input type="radio" id="pentaclesFourRadio" name="suit_pentacles_card" value="Four">
+					<label for="pentaclesFourRadio">Four</label><br>
+					<input type="radio" id="pentaclesFiveRadio" name="suit_pentacles_card" value="Five">
+					<label for="pentaclesFiveRadio">Five</label><br>
+					<input type="radio" id="pentaclesSixRadio" name="suit_pentacles_card" value="Six">
+					<label for="pentaclesSixRadio">Six</label><br>
+					<input type="radio" id="pentaclesSevenRadio" name="suit_pentacles_card" value="Seven">
+					<label for="pentaclesSevenRadio">Seven</label><br>
+					<input type="radio" id="pentaclesEightRadio" name="suit_pentacles_card" value="Eight">
+					<label for="pentaclesEightRadio">Eight</label><br>
+					<input type="radio" id="pentaclesNineRadio" name="suit_pentacles_card" value="Nine">
+					<label for="pentaclesNineRadio">Nine</label><br>
+					<input type="radio" id="pentaclesTenRadio" name="suit_pentacles_card" value="Ten">
+					<label for="pentaclesTenRadio">Ten</label><br>
+					<input type="radio" id="pentaclesPageRadio" name="suit_pentacles_card" value="Page">
+					<label for="pentaclesPageRadio">Page</label><br>
+					<input type="radio" id="pentaclesKnightRadio" name="suit_pentacles_card" value="Knight">
+					<label for="pentaclesKnightRadio">Knight</label><br>
+					<input type="radio" id="pentaclesQueenRadio" name="suit_pentacles_card" value="Queen">
+					<label for="pentaclesQueenRadio">Queen</label><br>
+					<input type="radio" id="pentaclesKingRadio" name="suit_pentacles_card" value="King">
+					<label for="pentaclesKingRadio">King</label><br>
+				</div>
+				
+				
+				
+			</div>
+			
+			<div class="col-3" id="positionRadio" style="display:none">
+			  <p>Please select your current card</p>
+				<input type="radio" id="uprightPositionRadio" name="upright_card" value="Upright">
+				<label for="uprightPositionRadio">Upright</label><br>
+				<input type="radio" id="ReversedPositionRadio" name="upright_card" value="Reversed">
+				<label for="ReversedPositionRadio">Reversed</label><br>
+				<br>
+				<button type="button" id="positionRadioButton" class="btn btn-primary">Submit Card</button>
+			</div>
+		  </div>
+		</div>
+
+		<div class="container">
+		  <div class="row">
+			<div class="col-12">
+			  <textarea id="promptReview" name="promptReview" style="width:100%;height:141px;">
+			  </textarea>
+			</div>
+			<div class="col-12">
+			  <button type="button" id="submitTarotButtonGPT" class="btn btn-primary">Get your Reading from Chat GPT</button>
+			</div>
+			<div class="col-12">
+			  <div id="GPTResult"></div>
+			</div>
+		  </div>
+		</div>
+
+
+	</div>
+
+	</body>
+</html>
