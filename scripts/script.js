@@ -1,4 +1,4 @@
-const localAPIkey = "";
+const localAPIkey = "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";
 
 $(document).ready(function(){
 	// comment out the below line to quickly populate a spread
@@ -14,6 +14,7 @@ $(document).ready(function(){
 	$("#GPTResult").text("");
 	$("#GPTResult").hide();
 	$("#submitTarotButtonGPT").hide();	
+	$("#resetButton").hide();	
   
   $("input[name='time_card']").change(function() {
 	$("#arcanaRadio").hide();
@@ -166,6 +167,12 @@ $(document).ready(function(){
     });
 	
 	$("#submitTarotButtonGPT").click(async function(){
+		$("#submitTarotButtonGPT").prop("disabled", true);
+		$("#submitTarotButton").hide();
+	    $("#overallRadioContainer").hide();
+	    $("#promptReview").hide();
+		$("#GPTResult").text("Awaiting response from Chat GPT");
+	  $("#GPTResult").show();
   
 	    const response = await fetch('https://api.openai.com/v1/responses', {
         method: 'POST',
@@ -180,11 +187,12 @@ $(document).ready(function(){
       });
 	  
 	  const data = await response.json();
+	  
+	  $("#resetButton").show();
 	  var textOnly = data.output[1].content[0].text;
 	  console.log(data);
 	  console.log(textOnly);	
 	  $("#GPTResult").text(textOnly);
-	  $("#GPTResult").show();
 		
     });
 	
@@ -193,6 +201,27 @@ $(document).ready(function(){
 		$("#presentCardStatus").text("10 of Cups Upright");
 		$("#futureCardStatus").text("Fool Reversed");
 		$("#submitTarotButton").show();
+	});
+	
+	$("#resetButton").click(function() {
+		// comment out the below line to quickly populate a spread
+		$("#submitTarotButtonDebugger").hide();
+		
+		$("#pastCardStatus").text("Empty");
+		$("#presentCardStatus").text("Empty");
+		$("#futureCardStatus").text("Empty");
+		$("#submitTarotButton").hide();
+		$('input[name="time_card"]').prop('checked', false);
+		$("#promptReview").text("");
+		$("#promptReview").hide();
+		$("#GPTResult").text("");
+		$("#GPTResult").hide();
+		$("#submitTarotButtonGPT").hide();	
+		$("#resetButton").hide();	
+		$("#submitTarotButton").hide();
+	    $("#overallRadioContainer").show();
+	    $("#promptReview").hide();
+		$("#submitTarotButtonGPT").prop("disabled", false);
 	});
 
   });
