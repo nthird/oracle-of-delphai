@@ -1,5 +1,3 @@
-const localAPIkey = "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";
-
 $(document).ready(function(){
 	// comment out the below line to quickly populate a spread
 	$("#submitTarotButtonDebugger").hide();
@@ -172,7 +170,9 @@ $(document).ready(function(){
 	    $("#overallRadioContainer").hide();
 	    $("#promptReview").hide();
 		$("#GPTResult").text("Awaiting response from Chat GPT");
-	  $("#GPTResult").show();
+	    $("#GPTResult").show();
+		
+		var localAPIkey = prompt("Please copy and paste your API key here", "");
   
 	    const response = await fetch('https://api.openai.com/v1/responses', {
         method: 'POST',
