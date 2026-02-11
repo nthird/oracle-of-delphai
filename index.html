@@ -17,22 +17,125 @@
 		
 		<p></p>
 		
-		<div class="container">
+		<div class="container" id="threeCardSpreadTop">
+			<div class="row">
+				<div class="col-6">
+					<img src="images/3card.png">
+				</div>
+				<div class="col-6">
+					<div class="row">
+						<div class="col-3">
+							Past Card
+						</div>
+						<div class="col-3" id="pastCardStatus">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							Present Card
+						</div>
+						<div class="col-3" id="presentCardStatus">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							Future Card
+						</div>
+						<div class="col-3" id="futureCardStatus">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container" id="fiveCardSpreadTop">
 		  <div class="row">
-			<div class="col-1">
-				Past Card
+		    <div class="col-6">
+			  <img src="images/5cardlinear.png" id="fiveCardSpreadImage">
 			</div>
-		    <div class="col-3" id="pastCardStatus">
+			<div class="col-6">
+			  <div class="row">
+			    <div class="col=3" id="cardOneOfFive">
+					Card #1
+				</div>
+				<div class="col-3" id="cardOneOfFiveStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardTwoOfFive">
+					Card #2
+				</div>
+				<div class="col-3" id="cardTwoOfFiveStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3"id="cardThreeOfFive">
+					Card #3
+				</div>
+				<div class="col-3" id="cardThreeOfFiveStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardFourOfFive">
+					Card #4
+				</div>
+				<div class="col-3" id="cardFourOfFiveStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardFiveOfFive">
+					Card #5
+				</div>
+				<div class="col-3" id="cardFiveOfFiveStatus"></div>
+			  </div>
 			</div>
-			<div class="col-1">
-				Present Card
+		  </div>
+		</div>
+				
+		<div class="container" id="sevenCardSpreadTop">
+		  <div class="row">
+		    <div class="col-6">
+			  <img src="images/7cardhorseshoe.png" id="sevenCardSpreadImage">
 			</div>
-			<div class="col-3" id="presentCardStatus">				
-			</div>
-			<div class="col-1">
-				Future Card
-			</div>
-			<div class="col-3" id="futureCardStatus">
+			<div class="col-6">
+			  <div class="row">
+			    <div class="col=3" id="cardOneOfSeven">
+					Card #1
+				</div>
+				<div class="col-3" id="cardOneOfSevenStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardTwoOfSeven">
+					Card #2
+				</div>
+				<div class="col-3" id="cardTwoOfSevenStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardThreeOfSeven">
+					Card #3
+				</div>
+				<div class="col-3" id="cardThreeOfSevenStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardFourOfSeven">
+					Card #4
+				</div>
+				<div class="col-3" id="cardFourOfSevenStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardFiveOfSeven">
+					Card #5
+				</div>
+				<div class="col-3" id="cardFiveOfSevenStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardSixOfSeven">
+					Card #6
+				</div>
+				<div class="col-3" id="cardSixOfSevenStatus"></div>
+			  </div>
+			  <div class="row">
+			    <div class="col=3" id="cardSevenOfSeven">
+					Card #7
+				</div>
+				<div class="col-3" id="cardSevenOfSevenStatus"></div>
+			  </div>
 			</div>
 		  </div>
 		</div>
@@ -52,7 +155,21 @@
 		
 		<div class="container" id="overallRadioContainer">
 		  <div class="row">
-			<div class="col-3" id="timeRadio">
+		    <div class="col-2" id="spreadRadio">
+			  <p>Please select your desired spread</p>
+				<input type="radio" id="threeCardSpreadRadio" name="spread_card" value="Three">
+				<label for="threeCardSpreadRadio">Three</label><br>
+				<input type="radio" id="fiveCardLinearSpreadRadio" name="spread_card" value="Five Linear">
+				<label for="fiveCardLinearSpreadRadio">Five (linear)</label><br>
+				<input type="radio" id="fiveCardCrossSpreadRadio" name="spread_card" value="Five Cross">
+				<label for="fiveCardCrossSpreadRadio">Five (simplified cross)</label><br>
+				<input type="radio" id="sevenCardSplitSpreadRadio" name="spread_card" value="Seven Split">
+				<label for="sevenCardSplitSpreadRadio">Seven (split decision)</label>
+				<input type="radio" id="sevenCardHorseshoeSpreadRadio" name="spread_card" value="Seven Horseshoe">
+				<label for="sevenCardHorseshowSpreadRadio">Seven (situational horseshoe)</label>
+				<br>
+			</div>
+			<div class="col-2" id="timeRadio" style="display:none">
 			  <p>Please select your current card</p>
 				<input type="radio" id="timePastRadio" name="time_card" value="Past">
 				<label for="timePastRadio">Past</label><br>
@@ -62,7 +179,39 @@
 				<label for="timeFutureRadio">Future</label>
 				<br>
 			</div>
-			<div class="col-3" id="suitRadio" style="display:none">
+			<div class="col-2" id="fiveCardRadio" style="display:none">
+			  <p>Please select your current card</p>
+				<input type="radio" id="oneOfFiveRadio" name="five_card" value="One">
+				<label id = "lbloneOfFiveRadio" for="oneOfFiveRadio">Card #1</label><br>
+				<input type="radio" id="twoOfFiveRadio" name="five_card" value="Two">
+				<label id = "lbltwoOfFiveRadio" for="twoOfFiveRadio">Card #2</label><br>
+				<input type="radio" id="threeOfFiveRadio" name="five_card" value="Three">
+				<label id = "lblthreeOfFiveRadio" for="threeOfFiveRadio">Card #3</label><br>
+				<input type="radio" id="fourOfFiveRadio" name="five_card" value="Four">
+				<label id = "lblfourOfFiveRadio" for="fourOfFiveRadio">Card #4</label><br>
+				<input type="radio" id="fiveOfFiveRadio" name="five_card" value="Five">
+				<label id = "lblfiveOfFiveRadio" for="fiveOfFiveRadio">Card #5</label><br>
+				<br>
+			</div>
+			<div class="col-2" id="sevenCardRadio" style="display:none">
+			  <p>Please select your current card</p>
+				<input type="radio" id="oneOfSevenRadio" name="seven_card" value="One">
+				<label id = "lbloneOfSevenRadio" for="oneOfSevenRadio">Card #1</label><br>
+				<input type="radio" id="twoOfSevenRadio" name="seven_card" value="Two">
+				<label id = "lbltwoOfSevenRadio" for="twoOfSevenRadio">Card #2</label><br>
+				<input type="radio" id="threeOfSevenRadio" name="seven_card" value="Three">
+				<label id = "lblthreeOfSevenRadio" for="threeOfSevenRadio">Card #3</label><br>
+				<input type="radio" id="fourOfSevenRadio" name="seven_card" value="Four">
+				<label id = "lblfourOfSevenRadio" for="fourOfSevenRadio">Card #4</label><br>
+				<input type="radio" id="fiveOfSevenRadio" name="seven_card" value="Five">
+				<label id = "lblfiveOfSevenRadio" for="fiveOfSevenRadio">Card #5</label><br>
+				<input type="radio" id="sixOfSevenRadio" name="seven_card" value="Six">
+				<label id = "lblsixOfSevenRadio" for="sixOfSevenRadio">Card #6</label><br>
+				<input type="radio" id="sevenOfSevenRadio" name="seven_card" value="Seven">
+				<label id = "lblsevenOfSevenRadio" for="sevenOfSevenRadio">Card #7</label><br>
+				<br>
+			</div>
+			<div class="col-2" id="suitRadio" style="display:none">
 			  <p>Select the suit of your card</p>
 				<input type="radio" id="suitArcanaRadio" name="suit_card" value="Arcana">
 				<label for="suitArcanaRadio">Arcana</label><br>
@@ -75,7 +224,7 @@
 				<input type="radio" id="suitPentaclesRadio" name="suit_card" value="Pentacles">
 				<label for="suitPentaclesRadio">Pentacles</label><br>
 			</div>
-			<div class="col-3" id="valueRadio">
+			<div class="col-2" id="valueRadio">
 				<div id="arcanaRadio" style="display:none">
 				  <p>Select the value of your card</p>
 					<input type="radio" id="arcanaFoolRadio" name="suit_arcana_card" value="Fool">
@@ -256,7 +405,7 @@
 				
 			</div>
 			
-			<div class="col-3" id="positionRadio" style="display:none">
+			<div class="col-2" id="positionRadio" style="display:none">
 			  <p>Please select your current card</p>
 				<input type="radio" id="uprightPositionRadio" name="upright_card" value="Upright">
 				<label for="uprightPositionRadio">Upright</label><br>
